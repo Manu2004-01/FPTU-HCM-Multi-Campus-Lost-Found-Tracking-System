@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\interfaces\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\interfaces\\iclaimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iclaimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IItemRepository.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IItemRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Interfaces\\IItemRepository.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IItemRepository.cs",
+              "RelativeToolTip": "Core\\Interfaces\\IItemRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T13:22:37.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IClaimRepository.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IClaimRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Interfaces\\IClaimRepository.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IClaimRepository.cs",
+              "RelativeToolTip": "Core\\Interfaces\\IClaimRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T13:22:29.53Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 228,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 228,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
