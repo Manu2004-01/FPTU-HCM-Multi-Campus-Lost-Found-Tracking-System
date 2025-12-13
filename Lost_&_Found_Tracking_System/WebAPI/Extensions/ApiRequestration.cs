@@ -49,10 +49,7 @@ namespace WebAPI.Extensions
                 {
                     pol.AllowAnyHeader()
                        .AllowAnyMethod()
-                       .AllowCredentials()
-                       .WithOrigins(
-                           "https://localhost:7166/"
-                       );
+                       .AllowAnyOrigin(); // Allow all origins for Swagger and API access
                 });
             });
 

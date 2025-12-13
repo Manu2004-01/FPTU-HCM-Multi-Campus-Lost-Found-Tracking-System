@@ -49,7 +49,12 @@ builder.Services
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "FPTU FTS API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo 
+    { 
+        Title = "FPTU FTS API", 
+        Version = "v1",
+        Description = "FPTU HCM Multi-Campus Lost & Found Tracking System API"
+    });
 
     var jwtSecurityScheme = new OpenApiSecurityScheme
     {
@@ -71,26 +76,42 @@ builder.Services.AddSwaggerGen(options =>
     {
         { jwtSecurityScheme, Array.Empty<string>() }
     });
+    
+    // Include XML comments if available
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+    {
+        options.IncludeXmlComments(xmlPath);
+    }
 });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// Enable Swagger in all environments for API documentation
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FPTU FTS API v1");
-    c.RoutePrefix = "swagger"; // Swagger UI available at /swagger
-});
-
 // Only use HTTPS redirection in Development
 if (app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
 }
 
+// Enable Swagger in all environments for API documentation
+// Must be placed early in the pipeline, before other middleware
+app.UseSwagger(c =>
+{
+    c.RouteTemplate = "swagger/{documentName}/swagger.json";
+});
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FPTU FTS API v1");
+    c.RoutePrefix = "swagger"; // Swagger UI available at /swagger
+    c.DisplayRequestDuration();
+    c.EnableTryItOutByDefault();
+});
+
 app.UseMiddleware<ExceptionMiddleware>();
+// Only use status code pages for non-Swagger routes
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 app.UseCors("CorsPolicy");
 
