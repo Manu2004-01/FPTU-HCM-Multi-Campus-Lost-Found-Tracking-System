@@ -89,14 +89,7 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// Only use HTTPS redirection in Development
-if (app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
-
-// Enable Swagger in all environments for API documentation
-// Must be placed VERY early in the pipeline, before any other middleware that might interfere
+// Enable Swagger FIRST - before any other middleware that might interfere
 app.UseSwagger(c =>
 {
     c.RouteTemplate = "swagger/{documentName}/swagger.json";
@@ -109,6 +102,12 @@ app.UseSwaggerUI(c =>
     c.DisplayRequestDuration();
     c.EnableTryItOutByDefault();
 });
+
+// Only use HTTPS redirection in Development
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors("CorsPolicy");
@@ -124,6 +123,15 @@ app.UseStaticFiles();
 // Health check endpoint
 app.MapGet("/", () => Results.Ok(new { message = "FPTU Lost & Found Tracking System API is running", status = "healthy" }))
     .WithName("HealthCheck")
+    .WithTags("Health");
+
+// Test endpoint to check if Swagger JSON is accessible
+app.MapGet("/swagger-test", () => Results.Ok(new { 
+    message = "Swagger test endpoint", 
+    swaggerJson = "/swagger/v1/swagger.json",
+    swaggerUI = "/swagger"
+}))
+    .WithName("SwaggerTest")
     .WithTags("Health");
 
 app.MapControllers();
