@@ -2,8 +2,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy solution file
-COPY ["Lost_&_Found_Tracking_System/Lost_&_Found_Tracking_System.sln", "./"]
+# Copy solution file to the correct location
+COPY ["Lost_&_Found_Tracking_System/Lost_&_Found_Tracking_System.sln", "Lost_&_Found_Tracking_System/"]
 
 # Copy project files
 COPY ["Lost_&_Found_Tracking_System/Core/Core.csproj", "Lost_&_Found_Tracking_System/Core/"]
@@ -11,10 +11,11 @@ COPY ["Lost_&_Found_Tracking_System/Infrastructure/Infrastructure.csproj", "Lost
 COPY ["Lost_&_Found_Tracking_System/WebAPI/WebAPI.csproj", "Lost_&_Found_Tracking_System/WebAPI/"]
 
 # Restore dependencies
+WORKDIR "/src/Lost_&_Found_Tracking_System"
 RUN dotnet restore "Lost_&_Found_Tracking_System.sln"
 
 # Copy everything else and build
-COPY ["Lost_&_Found_Tracking_System/", "./Lost_&_Found_Tracking_System/"]
+COPY ["Lost_&_Found_Tracking_System/", "Lost_&_Found_Tracking_System/"]
 WORKDIR "/src/Lost_&_Found_Tracking_System/WebAPI"
 RUN dotnet build "WebAPI.csproj" -c Release -o /app/build
 
