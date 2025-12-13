@@ -37,13 +37,13 @@ COPY --from=publish /app/publish .
 RUN mkdir -p /app/wwwroot/images/lostitems && \
     mkdir -p /app/wwwroot/images/claims
 
-# Expose ports
-EXPOSE 8080
-EXPOSE 8081
+# Expose port (Render will set PORT env variable dynamically)
+# Render automatically assigns a PORT, we'll use it via environment variable
+EXPOSE 10000
 
 # Set environment variables
-ENV ASPNETCORE_URLS=http://+:8080
 ENV ASPNETCORE_ENVIRONMENT=Production
+# Don't set ASPNETCORE_URLS here - let Program.cs handle it based on PORT env variable
 
 # Run the app
 ENTRYPOINT ["dotnet", "WebAPI.dll"]

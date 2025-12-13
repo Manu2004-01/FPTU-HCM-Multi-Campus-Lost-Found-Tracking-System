@@ -76,13 +76,19 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+// Enable Swagger in all environments for API documentation
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FPTU FTS API v1");
+    c.RoutePrefix = "swagger"; // Swagger UI available at /swagger
+});
+
+// Only use HTTPS redirection in Development
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
-
-app.UseHttpsRedirection();
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
@@ -93,8 +99,20 @@ app.UseAuthorization();
 
 app.UseStaticFiles();
 
+// Health check endpoint
+app.MapGet("/", () => Results.Ok(new { message = "FPTU Lost & Found Tracking System API is running", status = "healthy" }))
+    .WithName("HealthCheck")
+    .WithTags("Health");
+
 app.MapControllers();
 
 await InfrastructureRequistration.InfrastructureConfigMiddleware(app);
+
+// Configure port - Render provides PORT environment variable
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+{
+    app.Urls.Add($"http://+:{port}");
+}
 
 app.Run();
