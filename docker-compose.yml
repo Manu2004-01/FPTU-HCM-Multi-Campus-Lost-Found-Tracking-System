@@ -3,7 +3,7 @@ version: '3.8'
 services:
   webapi:
     build:
-      context: ./Lost_&_Found_Tracking_System
+      context: .
       dockerfile: Dockerfile
     container_name: lost-found-api
     ports:
@@ -21,4 +21,3 @@ services:
     volumes:
       - ./Lost_&_Found_Tracking_System/WebAPI/wwwroot:/app/wwwroot
     restart: unless-stopped
-

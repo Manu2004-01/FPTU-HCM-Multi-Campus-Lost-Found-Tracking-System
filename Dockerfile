@@ -3,19 +3,19 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy solution file
-COPY ["Lost_&_Found_Tracking_System.sln", "./"]
+COPY ["Lost_&_Found_Tracking_System/Lost_&_Found_Tracking_System.sln", "./"]
 
 # Copy project files
-COPY ["Core/Core.csproj", "Core/"]
-COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
-COPY ["WebAPI/WebAPI.csproj", "WebAPI/"]
+COPY ["Lost_&_Found_Tracking_System/Core/Core.csproj", "Lost_&_Found_Tracking_System/Core/"]
+COPY ["Lost_&_Found_Tracking_System/Infrastructure/Infrastructure.csproj", "Lost_&_Found_Tracking_System/Infrastructure/"]
+COPY ["Lost_&_Found_Tracking_System/WebAPI/WebAPI.csproj", "Lost_&_Found_Tracking_System/WebAPI/"]
 
 # Restore dependencies
 RUN dotnet restore "Lost_&_Found_Tracking_System.sln"
 
 # Copy everything else and build
-COPY . .
-WORKDIR "/src/WebAPI"
+COPY ["Lost_&_Found_Tracking_System/", "./Lost_&_Found_Tracking_System/"]
+WORKDIR "/src/Lost_&_Found_Tracking_System/WebAPI"
 RUN dotnet build "WebAPI.csproj" -c Release -o /app/build
 
 # Stage 2: Publish
@@ -43,4 +43,3 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 
 # Run the app
 ENTRYPOINT ["dotnet", "WebAPI.dll"]
-
