@@ -98,7 +98,7 @@ app.UseSwagger(c =>
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "FPTU FTS API v1");
-    c.RoutePrefix = "swagger"; // Swagger UI available at /swagger
+    c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root (/)
     c.DisplayRequestDuration();
     c.EnableTryItOutByDefault();
 });
@@ -120,18 +120,9 @@ app.UseAuthorization();
 
 app.UseStaticFiles();
 
-// Health check endpoint
-app.MapGet("/", () => Results.Ok(new { message = "FPTU Lost & Found Tracking System API is running", status = "healthy" }))
+// Health check endpoint - moved to /health so Swagger can be at root
+app.MapGet("/health", () => Results.Ok(new { message = "FPTU Lost & Found Tracking System API is running", status = "healthy" }))
     .WithName("HealthCheck")
-    .WithTags("Health");
-
-// Test endpoint to check if Swagger JSON is accessible
-app.MapGet("/swagger-test", () => Results.Ok(new { 
-    message = "Swagger test endpoint", 
-    swaggerJson = "/swagger/v1/swagger.json",
-    swaggerUI = "/swagger"
-}))
-    .WithName("SwaggerTest")
     .WithTags("Health");
 
 app.MapControllers();
