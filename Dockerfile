@@ -16,11 +16,12 @@ RUN dotnet restore "Lost_&_Found_Tracking_System.sln"
 
 # Copy everything else and build
 COPY ["Lost_&_Found_Tracking_System/", "Lost_&_Found_Tracking_System/"]
-WORKDIR "/src/Lost_&_Found_Tracking_System/WebAPI"
-RUN dotnet build "WebAPI.csproj" -c Release -o /app/build
+WORKDIR "/src/Lost_&_Found_Tracking_System"
+RUN dotnet build "Lost_&_Found_Tracking_System.sln" -c Release --no-restore
 
 # Stage 2: Publish
 FROM build AS publish
+WORKDIR "/src/Lost_&_Found_Tracking_System/WebAPI"
 RUN dotnet publish "WebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Stage 3: Runtime
