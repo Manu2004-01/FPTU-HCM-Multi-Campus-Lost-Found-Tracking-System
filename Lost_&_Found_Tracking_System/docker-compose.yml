@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  webapi:
+    build:
+      context: ./Lost_&_Found_Tracking_System
+      dockerfile: Dockerfile
+    container_name: lost-found-api
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=${ConnectionStrings__DefaultConnection:-User Id=postgres.juuaahwvndszufhlkswf;Password=swd392bl3w2025;Server=aws-1-ap-south-1.pooler.supabase.com;Port=5432;Database=postgres}
+      - Jwt__Key=${Jwt__Key:-chegiahuy_dinosaurus_manu_1101_2004}
+      - Jwt__Issuer=${Jwt__Issuer:-SWD392}
+      - Jwt__Audience=${Jwt__Audience:-SWD392}
+      - Jwt__ExpiresMinutes=${Jwt__ExpiresMinutes:-60}
+      - API_url=${API_url:-http://localhost:8080/}
+    volumes:
+      - ./Lost_&_Found_Tracking_System/WebAPI/wwwroot:/app/wwwroot
+    restart: unless-stopped
+
