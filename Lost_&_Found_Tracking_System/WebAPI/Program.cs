@@ -96,7 +96,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Enable Swagger in all environments for API documentation
-// Must be placed early in the pipeline, before other middleware
+// Must be placed VERY early in the pipeline, before any other middleware that might interfere
 app.UseSwagger(c =>
 {
     c.RouteTemplate = "swagger/{documentName}/swagger.json";
@@ -111,9 +111,10 @@ app.UseSwaggerUI(c =>
 });
 
 app.UseMiddleware<ExceptionMiddleware>();
-// Only use status code pages for non-Swagger routes
-app.UseStatusCodePagesWithReExecute("/errors/{0}");
 app.UseCors("CorsPolicy");
+
+// Temporarily disable status code pages to allow Swagger to work
+// app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 app.UseAuthentication();
 app.UseAuthorization();
