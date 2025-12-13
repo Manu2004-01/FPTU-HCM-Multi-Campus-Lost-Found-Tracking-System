@@ -2,26 +2,28 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy solution file to the correct location
-COPY ["Lost_&_Found_Tracking_System/Lost_&_Found_Tracking_System.sln", "Lost_&_Found_Tracking_System/"]
+# Copy solution file
+COPY ["Lost_&_Found_Tracking_System/Lost_&_Found_Tracking_System.sln", "./"]
 
-# Copy project files
-COPY ["Lost_&_Found_Tracking_System/Core/Core.csproj", "Lost_&_Found_Tracking_System/Core/"]
-COPY ["Lost_&_Found_Tracking_System/Infrastructure/Infrastructure.csproj", "Lost_&_Found_Tracking_System/Infrastructure/"]
-COPY ["Lost_&_Found_Tracking_System/WebAPI/WebAPI.csproj", "Lost_&_Found_Tracking_System/WebAPI/"]
+# Copy project files for better layer caching
+COPY ["Lost_&_Found_Tracking_System/Core/Core.csproj", "Core/"]
+COPY ["Lost_&_Found_Tracking_System/Infrastructure/Infrastructure.csproj", "Infrastructure/"]
+COPY ["Lost_&_Found_Tracking_System/WebAPI/WebAPI.csproj", "WebAPI/"]
 
 # Restore dependencies
-WORKDIR "/src/Lost_&_Found_Tracking_System"
 RUN dotnet restore "Lost_&_Found_Tracking_System.sln"
 
-# Copy everything else and build
-COPY ["Lost_&_Found_Tracking_System/", "Lost_&_Found_Tracking_System/"]
-WORKDIR "/src/Lost_&_Found_Tracking_System"
+# Copy all source code
+COPY ["Lost_&_Found_Tracking_System/Core/", "Core/"]
+COPY ["Lost_&_Found_Tracking_System/Infrastructure/", "Infrastructure/"]
+COPY ["Lost_&_Found_Tracking_System/WebAPI/", "WebAPI/"]
+
+# Build solution
 RUN dotnet build "Lost_&_Found_Tracking_System.sln" -c Release --no-restore
 
 # Stage 2: Publish
 FROM build AS publish
-WORKDIR "/src/Lost_&_Found_Tracking_System/WebAPI"
+WORKDIR "/src/WebAPI"
 RUN dotnet publish "WebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Stage 3: Runtime
