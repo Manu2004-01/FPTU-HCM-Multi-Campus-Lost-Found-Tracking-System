@@ -339,5 +339,58 @@ namespace Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> ReceiveItemAsync(int itemId, Guid staffId, string? notes)
+        {
+            var item = await _context.Items.FirstOrDefaultAsync(i => i.ItemId == itemId);
+            if (item == null) return false;
+
+            item.StatusId = 2; // verified
+            item.UpdatedAt = DateTime.UtcNow;
+
+            await _context.VerificationLogs.AddAsync(new VerificationLog
+            {
+                ItemId = item.ItemId,
+                ClaimId = null,
+                VerifiedByUserId = staffId,
+                VerificationType = "handover_receive",
+                Notes = notes ?? string.Empty,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> ReturnItemAsync(int itemId, Guid staffId, Guid studentId, string? signatureUrl, string? notes)
+        {
+            var item = await _context.Items.FirstOrDefaultAsync(i => i.ItemId == itemId);
+            if (item == null) return false;
+
+            item.StatusId = 4; // returned
+            item.UpdatedAt = DateTime.UtcNow;
+
+            await _context.ReturnRecords.AddAsync(new ReturnRecord
+            {
+                ItemId = itemId,
+                StaffId = staffId,
+                StudentId = studentId,
+                ReturnTime = DateTime.UtcNow,
+                SignatureUrl = signatureUrl ?? string.Empty
+            });
+
+            await _context.VerificationLogs.AddAsync(new VerificationLog
+            {
+                ItemId = item.ItemId,
+                ClaimId = null,
+                VerifiedByUserId = staffId,
+                VerificationType = "handover_return",
+                Notes = notes ?? string.Empty,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

@@ -21,5 +21,7 @@ namespace Core.Interfaces
         // Staff
         Task<bool> VerifyItemAsync(int itemId, Guid staffId, string? notes);
         Task<bool> UpdateItemStatusAsync(int itemId, Guid staffId, int newStatusId, string? notes);
+        Task<bool> ReceiveItemAsync(int itemId, Guid staffId, string? notes);
+        Task<bool> ReturnItemAsync(int itemId, Guid staffId, Guid studentId, string? signatureUrl, string? notes);
     }
 }
