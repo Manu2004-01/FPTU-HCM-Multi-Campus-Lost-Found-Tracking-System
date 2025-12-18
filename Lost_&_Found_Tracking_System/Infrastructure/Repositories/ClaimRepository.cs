@@ -182,5 +182,102 @@ namespace Infrastructure.Repositories
 
             return _mapper.Map<IEnumerable<StudentClaimDTO>>(claims);
         }
+
+        public async Task<IEnumerable<StaffClaimQueueDTO>> GetClaimQueueAsync(int? statusId = null)
+        {
+            var query = _context.Claims
+                .AsNoTracking()
+                .Include(c => c.Item)
+                .Include(c => c.Status)
+                .Include(c => c.Student)
+                .AsQueryable();
+
+            if (statusId.HasValue)
+                query = query.Where(c => c.StatusId == statusId.Value);
+
+            var list = await query
+                .OrderByDescending(c => c.CreatedAt)
+                .ToListAsync();
+
+            // manual projection to avoid adding a new AutoMapper profile if not needed
+            return list.Select(c => new StaffClaimQueueDTO
+            {
+                ClaimId = c.ClaimId,
+                ItemId = c.ItemId,
+                ItemTitle = c.Item?.Title,
+                ItemDescription = c.Item?.Description,
+                ItemImageUrl = c.Item?.ImageUrl,
+                StudentId = c.StudentId,
+                StudentName = c.Student?.Fullname,
+                StudentEmail = c.Student?.Email,
+                ClaimDescription = c.Description,
+                EvidenceImageUrl = c.EvidenceImageUrl,
+                StatusId = c.StatusId,
+                StatusName = c.Status?.StatusName,
+                CreatedAt = c.CreatedAt,
+                UpdatedAt = c.UpdatedAt
+            });
+        }
+
+        public async Task<bool> VerifyClaimAsync(int claimId, Guid staffId, int newStatusId, string? notes)
+        {
+            // newStatusId must exist
+            var statusExists = await _context.ClaimStatuses.AnyAsync(s => s.Id == newStatusId);
+            if (!statusExists) return false;
+
+            var claim = await _context.Claims.FirstOrDefaultAsync(c => c.ClaimId == claimId);
+            if (claim == null) return false;
+
+            claim.StatusId = newStatusId;
+            claim.UpdatedAt = DateTime.UtcNow;
+
+            await _context.VerificationLogs.AddAsync(new VerificationLog
+            {
+                ItemId = claim.ItemId,
+                ClaimId = claim.ClaimId,
+                VerifiedByUserId = staffId,
+                VerificationType = "claim_verify",
+                Notes = notes ?? string.Empty,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> ResolveConflictAsync(int itemId, int winnerClaimId, Guid staffId, string? notes)
+        {
+            // Winner claim must belong to the item
+            var winner = await _context.Claims.FirstOrDefaultAsync(c => c.ClaimId == winnerClaimId && c.ItemId == itemId);
+            if (winner == null) return false;
+
+            // Set winner to approved
+            winner.StatusId = 2; // approved
+            winner.UpdatedAt = DateTime.UtcNow;
+
+            // Set other claims of same item to rejected
+            var others = await _context.Claims
+                .Where(c => c.ItemId == itemId && c.ClaimId != winnerClaimId)
+                .ToListAsync();
+
+            foreach (var c in others)
+            {
+                c.StatusId = 3; // rejected
+                c.UpdatedAt = DateTime.UtcNow;
+            }
+
+            await _context.VerificationLogs.AddAsync(new VerificationLog
+            {
+                ItemId = itemId,
+                ClaimId = winnerClaimId,
+                VerifiedByUserId = staffId,
+                VerificationType = "claim_conflict_resolve",
+                Notes = notes ?? string.Empty,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

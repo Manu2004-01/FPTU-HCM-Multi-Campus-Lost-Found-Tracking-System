@@ -14,5 +14,10 @@ namespace Core.Interfaces
         Task<bool> UpdateClaimAsync(int claimId, Guid userId, UpdateClaimDTO claimDTO);
         Task<bool> DeleteClaimAsync(int claimId, Guid userId);
         Task<IEnumerable<StudentClaimDTO>> GetAllClaimsAsync(Guid userId);
+
+        // Staff
+        Task<IEnumerable<StaffClaimQueueDTO>> GetClaimQueueAsync(int? statusId = null);
+        Task<bool> VerifyClaimAsync(int claimId, Guid staffId, int newStatusId, string? notes);
+        Task<bool> ResolveConflictAsync(int itemId, int winnerClaimId, Guid staffId, string? notes);
     }
 }
