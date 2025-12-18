@@ -1,31 +1,26 @@
-# Build results
-bin/
-obj/
+**/bin/
+**/obj/
 
-# Visual Studio
 .vs/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-# Rider
 .idea/
-
-# VS Code
 .vscode/
 
-# NuGet
 packages/
 *.nupkg
 *.snupkg
 
-# Logs
-*.log
-
-# Publish
 publish/
 
-# OS files
+*.log
+*.cache
+*.tmp
+*.pdb
+
+.env
+.env.*
+
 .DS_Store
 Thumbs.db
+
+!README.md
+!**/README.md
