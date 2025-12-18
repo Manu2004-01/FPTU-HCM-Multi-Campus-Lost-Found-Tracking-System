@@ -292,5 +292,54 @@ namespace Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> VerifyItemAsync(int itemId, Guid staffId, string? notes)
+        {
+            var item = await _context.Items.FirstOrDefaultAsync(i => i.ItemId == itemId);
+            if (item == null) return false;
+
+            // pending -> verified
+            item.StatusId = 2;
+            item.UpdatedAt = DateTime.UtcNow;
+
+            await _context.VerificationLogs.AddAsync(new VerificationLog
+            {
+                ItemId = itemId,
+                ClaimId = null,
+                VerifiedByUserId = staffId,
+                VerificationType = "item_verify",
+                Notes = notes ?? string.Empty,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> UpdateItemStatusAsync(int itemId, Guid staffId, int newStatusId, string? notes)
+        {
+            var item = await _context.Items.FirstOrDefaultAsync(i => i.ItemId == itemId);
+            if (item == null) return false;
+
+            // basic guard: status id must exist in lookup
+            var statusExists = await _context.ItemStatuses.AnyAsync(s => s.Id == newStatusId);
+            if (!statusExists) return false;
+
+            item.StatusId = newStatusId;
+            item.UpdatedAt = DateTime.UtcNow;
+
+            await _context.VerificationLogs.AddAsync(new VerificationLog
+            {
+                ItemId = itemId,
+                ClaimId = null,
+                VerifiedByUserId = staffId,
+                VerificationType = "item_status_change",
+                Notes = notes ?? string.Empty,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

@@ -17,5 +17,9 @@ namespace Core.Interfaces
         Task<bool> DeleteItemAsync(int itemId);
 
         Task<IEnumerable<ItemDTO>> GetItemDashboardAsync(EntityParam entityParam);
+
+        // Staff
+        Task<bool> VerifyItemAsync(int itemId, Guid staffId, string? notes);
+        Task<bool> UpdateItemStatusAsync(int itemId, Guid staffId, int newStatusId, string? notes);
     }
 }
