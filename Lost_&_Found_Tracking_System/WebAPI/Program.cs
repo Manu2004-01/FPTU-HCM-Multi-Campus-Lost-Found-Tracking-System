@@ -98,10 +98,11 @@ app.UseSwagger(c =>
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "FPTU FTS API v1");
-    c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root (/)
     c.DisplayRequestDuration();
     c.EnableTryItOutByDefault();
 });
+
+app.UseRouting();
 
 // Only use HTTPS redirection in Development
 if (app.Environment.IsDevelopment())

@@ -16,5 +16,24 @@ namespace Core.Sharing
         public int? CategoryId { get; set; }
         public int? CampusId { get; set; }
         public Guid? UserId { get; set; }
+
+        //Page size
+        public int maxpagesize { get; set; } = 100;
+        private int pagesize = 10;
+        public int Pagesize
+        {
+            get => pagesize;
+            set => pagesize = value > maxpagesize ? maxpagesize : value;
+        }
+        public int Pagenumber { get; set; } = 1;
+
+        //Search
+        private string _search;
+
+        public string Search
+        {
+            get => _search;
+            set => _search = value?.ToLower();
+        }
     }
 }

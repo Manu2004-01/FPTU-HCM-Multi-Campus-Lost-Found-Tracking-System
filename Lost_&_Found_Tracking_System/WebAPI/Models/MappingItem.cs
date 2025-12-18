@@ -39,6 +39,17 @@ namespace WebAPI.Models
                 .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Description))
                 .ForMember(dest => dest.ImageUrl, opt => opt.Ignore())
                 .ReverseMap();
+
+            CreateMap<Item, ItemDTO>()
+                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.ItemId))
+                .ForMember(d => d.Title, opt => opt.MapFrom(s => s.Title))
+                .ForMember(d => d.Description, opt => opt.MapFrom(s => s.Description))
+                .ForMember(d => d.ImageUrl, static opt => opt.MapFrom<DashboardImageUrlResolver>())
+                .ForMember(d => d.StatusName, opt => opt.MapFrom(s => s.Status != null ? s.Status.StatusName : null))
+                .ForMember(d => d.CategoryName, opt => opt.MapFrom(s => s.Category != null ? s.Category.CategoryName : null))
+                .ForMember(d => d.CampusName, opt => opt.MapFrom(s => s.Campus != null ? s.Campus.CampusName : null))
+                .ForMember(d => d.CreatedAt, opt => opt.MapFrom(s => s.CreatedAt))
+                .ReverseMap();
         }
     }
 }

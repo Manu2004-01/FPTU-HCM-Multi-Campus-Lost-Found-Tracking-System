@@ -181,6 +181,55 @@ namespace Infrastructure.Repositories
             return _mapper.Map<IEnumerable<StudentItemDTO>>(list);
         }
 
+        public async Task<IEnumerable<ItemDTO>> GetItemDashboardAsync(EntityParam entityParam)
+        {
+            var query = _context.Items
+                .AsNoTracking()
+                .Include(i => i.ItemType)
+                .Include(i => i.Status)
+                .Include(i => i.Category)
+                .Include(i => i.Campus)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(entityParam.Sorting))
+            {
+                query = entityParam.Sorting switch
+                {
+                    "updateAt_asc" => query.OrderBy(i => i.UpdatedAt),
+                    _ => query.OrderByDescending(i => i.CreatedAt),
+                };
+            }
+            else
+            {
+                query = query.OrderByDescending(i => i.CreatedAt);
+            }
+
+            if (entityParam.ItemTypeId.HasValue)
+            {
+                query = query.Where(i => i.ItemTypeId == entityParam.ItemTypeId.Value);
+            }
+
+            if (entityParam.StatusId.HasValue)
+            {
+                query = query.Where(i => i.StatusId == entityParam.StatusId.Value);
+            }
+
+            if (entityParam.CategoryId.HasValue)
+            {
+                query = query.Where(i => i.CategoryId == entityParam.CategoryId.Value);
+            }
+
+            if (entityParam.CampusId.HasValue)
+            {
+                query = query.Where(i => i.CampusId == entityParam.CampusId.Value);
+            }
+
+            
+
+            var list = await query.ToListAsync();
+            return _mapper.Map<IEnumerable<ItemDTO>>(list);
+        }
+
         public async Task<bool> UpdateItemAsync(int itemId, UpdateItemDTO itemDTO)
         {
             var item = await _context.Items.FindAsync(itemId);

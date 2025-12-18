@@ -1,4 +1,5 @@
 ﻿using Core.DTOs;
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Interfaces
 {
-    public interface IClaimRepository
+    public interface IClaimRepository : IGenericRepository<Claim>
     {
         Task<bool> CreateClaimAsync(CreateClaimDTO claimDTO);
         Task<bool> UpdateClaimAsync(int claimId, Guid userId, UpdateClaimDTO claimDTO);

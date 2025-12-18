@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\interfaces\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\webapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\interfaces\\iclaimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iclaimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\webapi\\helpers\\pagination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\helpers\\pagination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\webapi\\controllers\\studentitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\studentitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,28 +38,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "IItemRepository.cs",
-              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IItemRepository.cs",
-              "RelativeDocumentMoniker": "Core\\Interfaces\\IItemRepository.cs",
-              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IItemRepository.cs",
-              "RelativeToolTip": "Core\\Interfaces\\IItemRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Pagination.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Helpers\\Pagination.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Helpers\\Pagination.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Helpers\\Pagination.cs",
+              "RelativeToolTip": "WebAPI\\Helpers\\Pagination.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T13:22:37.685Z",
+              "WhenOpened": "2025-12-18T08:41:07.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IClaimRepository.cs",
-              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IClaimRepository.cs",
-              "RelativeDocumentMoniker": "Core\\Interfaces\\IClaimRepository.cs",
-              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IClaimRepository.cs",
-              "RelativeToolTip": "Core\\Interfaces\\IClaimRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "StudentItemController.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Controllers\\StudentItemController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\StudentItemController.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Controllers\\StudentItemController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\StudentItemController.cs",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAowMEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T13:22:29.53Z",
+              "WhenOpened": "2025-12-18T08:27:25.612Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwDMAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T08:27:23.814Z",
               "EditorCaption": ""
             }
           ]

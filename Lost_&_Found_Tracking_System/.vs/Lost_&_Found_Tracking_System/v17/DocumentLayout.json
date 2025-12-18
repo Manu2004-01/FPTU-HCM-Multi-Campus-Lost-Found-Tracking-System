@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\entities\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\entities\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F332EBD-8AF8-4A7B-81F1-50130B6B0109}|Infrastructure\\Infrastructure.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\infrastructure\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F332EBD-8AF8-4A7B-81F1-50130B6B0109}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\interfaces\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\dtos\\studentitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\dtos\\studentitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\interfaces\\iclaimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iclaimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\core\\dtos\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6ABB002-21B7-4592-ABB6-10C76ED891A5}|Core\\Core.csproj|solutionrelative:core\\dtos\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|d:\\fptu\\fa25\\fptu-hcm-multi-campus-lost-found-tracking-system\\lost_\u0026_found_tracking_system\\webapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AB7AFE3-BE24-4618-84F3-701AE98EAE9B}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +26,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ItemRepository.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Infrastructure\\Repositories\\ItemRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\ItemRepository.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Infrastructure\\Repositories\\ItemRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\ItemRepository.cs",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAuwOIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T08:45:17.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudentItemDTO.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\DTOs\\StudentItemDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTOs\\StudentItemDTO.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\DTOs\\StudentItemDTO.cs",
+              "RelativeToolTip": "Core\\DTOs\\StudentItemDTO.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T08:44:58.978Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -38,41 +68,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Item.cs",
-              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Entities\\Item.cs",
-              "RelativeDocumentMoniker": "Core\\Entities\\Item.cs",
-              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Entities\\Item.cs",
-              "RelativeToolTip": "Core\\Entities\\Item.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T14:14:26.963Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IItemRepository.cs",
-              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IItemRepository.cs",
-              "RelativeDocumentMoniker": "Core\\Interfaces\\IItemRepository.cs",
-              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IItemRepository.cs",
-              "RelativeToolTip": "Core\\Interfaces\\IItemRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T13:22:37.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IClaimRepository.cs",
-              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IClaimRepository.cs",
-              "RelativeDocumentMoniker": "Core\\Interfaces\\IClaimRepository.cs",
-              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\Interfaces\\IClaimRepository.cs",
-              "RelativeToolTip": "Core\\Interfaces\\IClaimRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
+              "Title": "ItemDTO.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\DTOs\\ItemDTO.cs",
+              "RelativeDocumentMoniker": "Core\\DTOs\\ItemDTO.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\Core\\DTOs\\ItemDTO.cs",
+              "RelativeToolTip": "Core\\DTOs\\ItemDTO.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA2wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T13:22:29.53Z",
+              "WhenOpened": "2025-12-18T08:44:53.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\FPTU\\FA25\\FPTU-HCM-Multi-Campus-Lost-Found-Tracking-System\\Lost_\u0026_Found_Tracking_System\\WebAPI\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAwDMAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T08:27:23.814Z",
               "EditorCaption": ""
             }
           ]
