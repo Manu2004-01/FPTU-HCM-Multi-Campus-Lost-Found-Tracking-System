@@ -11,7 +11,7 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("staff/handover")]
-    [Authorize(Roles = "staff")]
+    [Authorize]
     public class StaffHandoverController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -24,6 +24,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("receive")]
+        [Authorize(Roles = "staff")]
         public async Task<IActionResult> Receive([FromBody] StaffReceiveItemDTO dto)
         {
             var staffId = GetUserIdFromToken();
@@ -42,6 +43,7 @@ namespace WebAPI.Controllers
 
         // Tạo lịch hẹn trả đồ
         [HttpPost("schedule")]
+        [Authorize(Roles = "staff,student")]
         public async Task<IActionResult> Schedule([FromBody] StaffScheduleReturnDTO dto)
         {
             var staffId = GetUserIdFromToken();
@@ -60,8 +62,8 @@ namespace WebAPI.Controllers
             return Ok(new { message = "Tạo lịch hẹn thành công", appointmentId = result.AppointmentId });
         }
 
-        // Trả đồ + lưu chữ ký (multipart/form-data)
         [HttpPost("return")]
+        [Authorize(Roles = "staff")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> ReturnItem([FromForm] StaffReturnItemDTO dto)
         {
