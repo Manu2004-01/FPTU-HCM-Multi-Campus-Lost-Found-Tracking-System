@@ -12,5 +12,6 @@ namespace Core.Interfaces
         public IItemRepository ItemRepository { get; }
         public IClaimRepository ClaimRepository { get; }
         public IAppointmentRepository AppointmentRepository { get; }
+        public IReportRepository ReportRepository { get; }
     }
 }

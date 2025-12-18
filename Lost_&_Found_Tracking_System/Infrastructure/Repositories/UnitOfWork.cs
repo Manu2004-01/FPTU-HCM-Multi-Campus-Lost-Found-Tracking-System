@@ -27,6 +27,8 @@ namespace Infrastructure.Repositories
 
         public IAppointmentRepository AppointmentRepository { get; }
 
+        public IReportRepository ReportRepository { get; }
+
 
         public UnitOfWork(ApplicationDBContext dbContext, IFileProvider fileProvider, IMapper mapper, ITokenService tokenService)
         {
@@ -37,6 +39,7 @@ namespace Infrastructure.Repositories
             ItemRepository = new ItemRepository(_dbContext, _fileProvider, _mapper);
             ClaimRepository = new ClaimRepository(_dbContext, _fileProvider, _mapper);
             AppointmentRepository = new AppointmentRepository(_dbContext);
+            ReportRepository = new ReportRepository(_dbContext);
         }
     }
 }
