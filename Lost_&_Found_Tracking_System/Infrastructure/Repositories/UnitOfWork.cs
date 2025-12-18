@@ -29,6 +29,8 @@ namespace Infrastructure.Repositories
 
         public IReportRepository ReportRepository { get; }
 
+        public ICampusRepository CampusRepository { get; }
+
 
         public UnitOfWork(ApplicationDBContext dbContext, IFileProvider fileProvider, IMapper mapper, ITokenService tokenService)
         {
@@ -40,6 +42,7 @@ namespace Infrastructure.Repositories
             ClaimRepository = new ClaimRepository(_dbContext, _fileProvider, _mapper);
             AppointmentRepository = new AppointmentRepository(_dbContext);
             ReportRepository = new ReportRepository(_dbContext);
+            CampusRepository = new CampusRepository(_dbContext, _mapper);
         }
     }
 }
