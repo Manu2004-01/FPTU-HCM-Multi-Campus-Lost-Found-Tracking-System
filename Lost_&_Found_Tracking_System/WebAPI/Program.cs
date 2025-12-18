@@ -119,6 +119,8 @@ app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Serve wwwroot (e.g. index.html for Render root requests)
+app.UseDefaultFiles();
 app.UseStaticFiles();
 
 // Health check endpoint - moved to /health so Swagger can be at root
