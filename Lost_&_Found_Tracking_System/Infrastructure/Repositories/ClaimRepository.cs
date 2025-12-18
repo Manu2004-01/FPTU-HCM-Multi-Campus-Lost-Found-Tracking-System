@@ -199,29 +199,11 @@ namespace Infrastructure.Repositories
                 .OrderByDescending(c => c.CreatedAt)
                 .ToListAsync();
 
-            // manual projection to avoid adding a new AutoMapper profile if not needed
-            return list.Select(c => new StaffClaimQueueDTO
-            {
-                ClaimId = c.ClaimId,
-                ItemId = c.ItemId,
-                ItemTitle = c.Item?.Title,
-                ItemDescription = c.Item?.Description,
-                ItemImageUrl = c.Item?.ImageUrl,
-                StudentId = c.StudentId,
-                StudentName = c.Student?.Fullname,
-                StudentEmail = c.Student?.Email,
-                ClaimDescription = c.Description,
-                EvidenceImageUrl = c.EvidenceImageUrl,
-                StatusId = c.StatusId,
-                StatusName = c.Status?.StatusName,
-                CreatedAt = c.CreatedAt,
-                UpdatedAt = c.UpdatedAt
-            });
+            return _mapper.Map<List<StaffClaimQueueDTO>>(list);
         }
 
         public async Task<bool> VerifyClaimAsync(int claimId, Guid staffId, int newStatusId, string? notes)
         {
-            // newStatusId must exist
             var statusExists = await _context.ClaimStatuses.AnyAsync(s => s.Id == newStatusId);
             if (!statusExists) return false;
 
@@ -247,15 +229,14 @@ namespace Infrastructure.Repositories
 
         public async Task<bool> ResolveConflictAsync(int itemId, int winnerClaimId, Guid staffId, string? notes)
         {
-            // Winner claim must belong to the item
             var winner = await _context.Claims.FirstOrDefaultAsync(c => c.ClaimId == winnerClaimId && c.ItemId == itemId);
             if (winner == null) return false;
 
-            // Set winner to approved
+            // Set winner to be approved
             winner.StatusId = 2; // approved
             winner.UpdatedAt = DateTime.UtcNow;
 
-            // Set other claims of same item to rejected
+            // Set other claims to be rejected
             var others = await _context.Claims
                 .Where(c => c.ItemId == itemId && c.ClaimId != winnerClaimId)
                 .ToListAsync();

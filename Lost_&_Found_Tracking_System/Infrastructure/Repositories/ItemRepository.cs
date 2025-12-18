@@ -298,7 +298,6 @@ namespace Infrastructure.Repositories
             var item = await _context.Items.FirstOrDefaultAsync(i => i.ItemId == itemId);
             if (item == null) return false;
 
-            // pending -> verified
             item.StatusId = 2;
             item.UpdatedAt = DateTime.UtcNow;
 
@@ -321,7 +320,6 @@ namespace Infrastructure.Repositories
             var item = await _context.Items.FirstOrDefaultAsync(i => i.ItemId == itemId);
             if (item == null) return false;
 
-            // basic guard: status id must exist in lookup
             var statusExists = await _context.ItemStatuses.AnyAsync(s => s.Id == newStatusId);
             if (!statusExists) return false;
 

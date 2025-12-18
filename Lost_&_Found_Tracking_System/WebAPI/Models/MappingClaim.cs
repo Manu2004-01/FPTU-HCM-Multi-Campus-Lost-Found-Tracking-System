@@ -26,6 +26,15 @@ namespace WebAPI.Models
                 .ForMember(d => d.CreatedAt, opt => opt.MapFrom(s => s.CreatedAt))
                 .ForMember(d => d.UpdatedAt, opt => opt.MapFrom(s => s.UpdatedAt))
                 .ReverseMap();
+
+            CreateMap<Claim, StaffClaimQueueDTO>()
+                .ForMember(d => d.ItemTitle, o => o.MapFrom(s => s.Item.Title))
+                .ForMember(d => d.ItemDescription, o => o.MapFrom(s => s.Item.Description))
+                .ForMember(d => d.ItemImageUrl, o => o.MapFrom(s => s.Item.ImageUrl))
+                .ForMember(d => d.StudentName, o => o.MapFrom(s => s.Student.Fullname))
+                .ForMember(d => d.StudentEmail, o => o.MapFrom(s => s.Student.Email))
+                .ForMember(d => d.ClaimDescription, o => o.MapFrom(s => s.Description))
+                .ForMember(d => d.StatusName, o => o.MapFrom(s => s.Status.StatusName));
         }
     }
 }
