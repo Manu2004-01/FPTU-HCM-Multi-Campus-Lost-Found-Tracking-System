@@ -44,6 +44,10 @@ namespace WebAPI.Controllers
                 if(claimDTO == null)
                     return BadRequest(new BaseCommentResponse(400, "Thiếu thông tin claim"));
 
+                // Validate ItemId
+                if (claimDTO.ItemId <= 0)
+                    return BadRequest(new BaseCommentResponse(400, "ItemId không hợp lệ"));
+
                 // Set StudentId từ token để đảm bảo security
                 claimDTO.StudentId = userId;
 
@@ -53,7 +57,19 @@ namespace WebAPI.Controllers
                 var result = await _unitOfWork.ClaimRepository.CreateClaimAsync(claimDTO);
 
                 if (!result)
-                    return StatusCode(500, new BaseCommentResponse(500, "Tạo claim không thành công"));
+                {
+                    // Kiểm tra lại để xác định lỗi chính xác
+                    // Có 2 trường hợp: ItemId không tồn tại hoặc đã claim rồi
+                    // Kiểm tra ItemId trước
+                    var item = await _unitOfWork.ItemRepository.GetByIdAsync(claimDTO.ItemId);
+                    if (item == null)
+                    {
+                        return BadRequest(new BaseCommentResponse(400, $"ItemId {claimDTO.ItemId} không tồn tại"));
+                    }
+                    
+                    // Nếu item tồn tại, có thể là do duplicate claim
+                    return BadRequest(new BaseCommentResponse(400, $"Bạn đã claim item này (ItemId: {claimDTO.ItemId}) rồi. Không thể tạo claim trùng lặp."));
+                }
 
                 return Ok(claimDTO);
             }

@@ -36,7 +36,20 @@ namespace Infrastructure.Repositories
                 return false; // ItemId không tồn tại
             }
 
+            // Kiểm tra xem student đã claim item này chưa (tránh duplicate claim từ cùng 1 student)
+            var existingClaim = await _context.Claims
+                .AnyAsync(c => c.ItemId == claimDTO.ItemId && c.StudentId == claimDTO.StudentId);
+            
+            if (existingClaim)
+            {
+                return false; // Student đã claim item này rồi
+            }
+
             var claim = _mapper.Map<Claim>(claimDTO);
+            
+            // Đảm bảo ItemId và StudentId được set đúng (không bị thay đổi bởi mapping)
+            claim.ItemId = claimDTO.ItemId;
+            claim.StudentId = claimDTO.StudentId;
 
             if (claimDTO.EvidenceImage != null)
             {
