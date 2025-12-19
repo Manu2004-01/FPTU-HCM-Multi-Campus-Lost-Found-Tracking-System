@@ -19,9 +19,9 @@ namespace Core.Entities
 
         public Guid StudentId { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly Time { get; set; }
 
-        public TimeSpan Time { get; set; }
 
         public int StatusId { get; set; }
         

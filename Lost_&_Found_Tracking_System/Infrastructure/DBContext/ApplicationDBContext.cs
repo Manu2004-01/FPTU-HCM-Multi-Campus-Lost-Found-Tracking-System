@@ -273,8 +273,9 @@ namespace Infrastructure.DBContext
                 entity.Property(e => e.ItemId).HasColumnName("item_id");
                 entity.Property(e => e.StaffId).HasColumnName("staff_id");
                 entity.Property(e => e.StudentId).HasColumnName("student_id");
-                entity.Property(e => e.Date).HasColumnName("date");
-                entity.Property(e => e.Time).HasColumnName("time");
+                entity.Property(e => e.Date).HasColumnName("date").HasColumnType("date");
+                entity.Property(e => e.Time).HasColumnName("time").HasColumnType("time without time zone");
+
                 entity.Property(e => e.StatusId).HasColumnName("status_id");
             });
 
