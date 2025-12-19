@@ -3,6 +3,7 @@ using Core.Entities;
 using Core.Interfaces;
 using Infrastructure.DBContext;
 using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infrastructure.Repositories
 {
@@ -30,13 +31,22 @@ namespace Infrastructure.Repositories
                 ItemId = itemId,
                 StaffId = staffId,
                 StudentId = studentId,
-                Date = date.ToDateTime(TimeOnly.MinValue),
-                Time = time,
+                Date = date,
+                Time = TimeOnly.FromTimeSpan(time),
+
                 StatusId = 1 // scheduled
             };
 
-            await _context.Appointments.AddAsync(appt);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.Appointments.AddAsync(appt);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                var msg = ex.InnerException?.Message ?? ex.Message;
+                throw new Exception("DB error: " + msg, ex);
+            }
 
             return new CreateAppointmentResult
             {
