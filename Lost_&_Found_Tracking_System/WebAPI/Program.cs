@@ -17,6 +17,10 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.InfrastructureConfiguration(builder.Configuration);
 
+// Auto-detect API URL from request or environment
+// This will be set dynamically in middleware
+builder.Services.AddHttpContextAccessor();
+
 // JWT authentication
 var jwtSection = builder.Configuration.GetSection("Jwt");
 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection["Key"]!));
@@ -113,15 +117,16 @@ if (app.Environment.IsDevelopment())
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors("CorsPolicy");
 
+// Serve static files BEFORE authentication so images are publicly accessible
+// Serve wwwroot (e.g. index.html for Render root requests)
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 // Temporarily disable status code pages to allow Swagger to work
 // app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-// Serve wwwroot (e.g. index.html for Render root requests)
-app.UseDefaultFiles();
-app.UseStaticFiles();
 
 // Health check endpoint - moved to /health so Swagger can be at root
 app.MapGet("/health", () => Results.Ok(new { message = "FPTU Lost & Found Tracking System API is running", status = "healthy" }))
